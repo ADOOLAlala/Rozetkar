@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="icon" href="../favicon.png" type="image/x-icon">
+    <style>
+        html,
+        body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper>*:last-child {
+            margin-bottom: auto;
+        }
+
+        footer {
+            background-color: gray;
+            text-align: center;
+            margin-top: 0;
+            width: 100%;
+            height: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top {
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            background-color: #000000;
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .rozetkalogo {
+            width: 60px;
+            height: 50px;
+        }
+
+        .menulogo {
+            width: 30px;
+            height: 30px;
+            margin-left: 11%;
+        }
+
+        .catalogimg {
+            all: unset;
+            margin-left: 0;
+            height: 100%;
+            width: auto;
+            padding: 5%;
+        }
+
+        .catalog {
+            all: unset;
+            padding: 5px;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            width: auto;
+            border: 1px solid rgb(255, 255, 255);
+            margin-left: 1%;
+            margin-right: 20px;
+        }
+
+        .catalog h3 {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            margin-left: 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .searchbar {
+            flex: 1 1 400px;
+            min-width: 250px;
+            margin-right: 0;
+        }
+
+        .search-container {
+            position: relative;
+            width: 90%;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 8px 40px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            margin-right: 0;
+        }
+
+        .search-icon,
+        .mic-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+        }
+
+        .search-icon {
+            left: 10px;
+        }
+
+        .mic-icon {
+            right: 360px;
+            width: 14px;
+            height: 20px;
+        }
+
+        .search-button {
+            margin-left: 0;
+            background-color: rgb(0, 146, 0);
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+
+        .search-container select {
+            background: none;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-left: 20px;
+        }
+
+        .search-icon img,
+        .mic-icon img {
+            width: 100%;
+            height: auto;
+            opacity: 0.6;
+        }
+
+        .nav {
+            background-color: #e5e5e5;
+            padding: 10px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .banner {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+            background: #ccc;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-card h4 {
+            margin: 10px 0 5px;
+            font-size: 16px;
+        }
+
+        .product-card p {
+            color: #00a046;
+            font-weight: bold;
+        }
+
+        .lang-select {
+            font-size: 16px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: none;
+            background-color: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .catalog {
+                width: 100%;
+                justify-content: flex-start;
+                margin-top: 10px;
+            }
+
+            .searchbar {
+                width: 100%;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .banner {
+                height: 150px;
+            }
+
+            .lang-select {
+                margin-left: auto;
+            }
+        }
+
+        .accountpng {
+            width: 55px;
+            height: 55px;
+            margin-left: 20px;
+        }
+
+        .weigh {
+
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+        }
+
+        .trolley {
+
+            width: 45px;
+            height: 40px;
+            margin-left: 20px;
+        }
+
+        .maincontainer {
+            border: none;
+            justify-content: right;
+            text-align: right;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 0;
+        }
+
+        .appsflex,
+        .appsflexx {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .apps {
+            width: 100%;
+            height: auto;
+            text-align: left;
+
+        }
+
+        .apps h5 {
+
+            font-weight: 550;
+        }
+
+        .appsflex {
+            width: 100%;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .appsflexx {
+            max-width: 180px;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+
+        .appstore img {
+            height: 40px;
+            width: auto;
+        }
+
+        .playmarket img {
+            height: 35px;
+            width: auto;
+
+        }
+
+        .smallicon {
+            width: 30px;
+            height: 30px;
+        }
+
+
+        footer {
+            margin-top: 80px;
+            width: 100%;
+            height: 500px;
+            background-color: rgb(255, 255, 255);
+            border-top: 2px solid gray;
+            padding: 15px 3% 15px 3%;
+
+        }
+
+        .offerbutto {
+            margin-top: 30px;
+            height: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grbutton {
+            color: white;
+            border-radius: 7px;
+            border: 1px solid green;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            background-color: rgb(0, 173, 0);
+        }
+
+        .footcontainer {
+            width: 80%;
+            height: auto;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .footcolum {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footerqrappicon {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footqrappleft {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footqrappright {
+            width: 55%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footqrappright img {
+            height: 35px;
+        }
+
+        .footcolum ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footcolum li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footbottom {
+            width: 100%;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .footbottom button {
+            width: auto;
+            height: auto;
+            padding: 4px;
+            background: none;
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+        }
+
+        .footbottom ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footbottom li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .fobottom {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .headergreen {
+            background-color: #a2daba;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #a2daba;
+        }
+
+        .headergreen h3 {
+            font-weight: 550;
+        }
+
+        .maincontainer {
+            width: 100%;
+            height: auto;
+
+        }
+
+        .bodycontainer {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 1%;
+
+        }
+
+        .headerbottomm {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-bottom: 1px solid #cbcbcb;
+
+        }
+
+        .headerbottomm a {
+            color: black;
+        }
+
+        .headerbottomm a:hover {
+            color: rgb(21, 161, 21);
+        }
+
+        .rozetkabar {
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top:2%;
+        }
+
+        .rozleft {
+            width: 40%;
+            height: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rozright {
+            margin-left:10%;
+            width: 50%;
+            height: 100%;
+            text-align: left;
+            align-items: center;
+
+        }
+
+        .rozright .rbutton {
+            background: none;
+            padding: 5px;
+            border: 1px solid rgb(181, 181, 181);
+            border-radius: 6px;
+            margin-right:2%;
+            margin-bottom:2%;
+        }
+
+        .rozright .rbuttongr {
+            background-color: #b7e6cb7b;
+            padding: 5px;
+            border-radius: 6px;
+        }
+        .rightgreen {
+            margin-top:2%;
+            color: white;
+            border-radius: 7px;
+            border: 1px solid green;
+            width: auto;
+            height: auto;
+            padding: 7px;
+            background-color: rgb(0, 173, 0);
+        }
+        .advantages  {
+            margin-top: 2%;
+            margin-bottom: 2%;
+            width:100%;
+            height:auto;
+            background-color: rgba(255, 232, 85, 0.618);
+            text-align: center;
+            justify-content: space-between;
+            padding: 1% 2% 1% 2%;
+            border-radius: 20px;
+        }
+        .advflex {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        .advantages h3 {
+            font-weight: 600;
+            margin-bottom: 2%;
+        }
+        .how {
+            width: 100%;
+            height:auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .howleft {
+            background-color: #a2daba;
+            border-radius: 25px;
+            width: 48%;
+            padding:30px;
+            height:100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            text-align: left;
+        }
+        .howright {
+            background-color: #a2daba;
+            border-radius: 25px;
+            padding:30px;
+            width: 48%;
+            height:100%;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+        }
+        .howleft h3, .howright h3  {
+            font-weight: 600;
+            margin-bottom:30px;
+            text-align: center;
+        }
+        .clients {
+            padding-top: 4%;
+            padding-bottom:2%;
+            padding-left:4%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            background-color: #d4e8dce8;
+            border-radius: 25px;
+            width:100%;
+            height:auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .clleft {
+            width:60%;
+            height: auto;
+            align-items: center;
+            text-align: left;
+
+        }
+        .clright {
+            width:35%;
+        }
+        .questions {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .quleft {
+            width:40%;
+            height:auto;
+            justify-content: center;
+            align-items:center;
+        }
+        .quleft img {
+            width:90%;
+        }
+        .quright {
+            width:60%;
+            height:auto;
+            text-align: left;
+            padding-left:2%;
+        }
+        .quright h3 {
+            font-weight:600;
+            margin-bottom: 4%;
+        }
+        .quinput select {
+            width:100%;
+            height:auto;
+            padding:10px;
+            border-radius: 6px;
+        }
+        .quinput {
+            width:100%;
+            height:auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap:15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="top">
+            <img src="../pictures/top.jpg" class="topimg" alt="Весняний фешн розпродаж">
+        </div>
+        <header>
+            <img src="../pictures/whitemenu.png" class="menulogo" alt="Rozetka">
+            <img src="https://horoshop.ua/images/28/99031323856777.png" class="rozetkalogo" alt="Rozetka">
+            <a href="INDEX.html" style="color:white;"><h2 style="font-family: sans-serif;">ROZETKA</h2></a>
+
+            <div class="catalog">
+                <img src="https://diamondcity.by/thumb/2/AIIKxspgRNbUWO1Io7fB4g/640r480/d/list-text_1.png"
+                    class="catalogimg" alt="Catalog">
+                <h3>Каталог</h3>
+            </div>
+
+            <div class="searchbar">
+                <div class="search-container">
+                    <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" class="search-icon" alt="Лупа">
+                    <input type="text" placeholder="Пошук товарів..." />
+                    <img src="https://static-00.iconduck.com/assets.00/mic-icon-718x1024-vxy5v3pz.png" class="mic-icon"
+                        alt="Мікрофон">
+                    <button class="search-button">Знайти</button>
+                    <select name="choice" id="select" size="1" class="lang-select">
+                        <option value="UA">UA</option>
+                        <option value="EN">EN</option>
+                    </select>
+
+                    <div class="rightlogo"><a href="ACCOUNT.html">
+                            <img src="../pictures/accountpng.png" class="accountpng" alt="account">
+                        </a> </div>
+
+                    <div class="rightlogo"><a href="#">
+                            <img src="../pictures/weighhh.png" class="weigh" alt="weighhh">
+                        </a>
+                    </div>
+
+                    <div class="rightlogo"><a href="#">
+                            <img src="https://www.freeiconspng.com/thumbs/cart-icon/cart-icon-16.png" class="trolley"
+                                alt="trolley">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="headergreen">
+            <h3>Накращий подарунок - сертифікат ROZETKA</h3>
+        </div>
+
+        <div class="maincontainer">
+            <div class="bodycontainer">
+                <div class="headerbottomm">
+                    <a>Про сертифікати</a>
+                    <a>Корпоративним клієнтам</a>
+                    <a>Поширенні запитання</a>
+                </div>
+
+                <div class="rozetkabar">
+                    <div class="rozleft">
+                        <img src="../pictures/certificate/rozetkac.svg">
+                    </div>
+
+                    <div class="rozright">
+                        <div class="rozbuttons">
+                            <button class="rbutton">Фізичний</button>
+                            <button class="rbuttongr">Електронний</button>
+                        </div>
+                        <p>Електронний подарунковий сертифікат — це попередній платіж, який дає можливість купувати <br>
+                            товари на суму, еквівалентну його номіналу. Термін дії сертифіката обмежений і становить 6<br>
+                            місяців із дати його купівлі.</p> <br>
+                        <p>Сертифікат діє тільки на товари продавця Rozetka і не поширюється на товари інших продавців.</p>
+
+                        <button class="rightgreen">Купити електронний сертифікат</button>
+                    </div>
+                </div>
+
+                <div class="advantages">
+                    <h3>Переваги електронного подарункового сертифікату</h3>
+                    <div class="advflex">
+                        <div class="adbar">
+                            <p>✅ Електронний сертифікат — ідеальний <br> подарунок для тих, хто далеко.</p>
+                        </div>
+                        
+                        <div class="adbar">
+                            <p>✅ Дозволяє зробити подарунок, навіть <br> якщо неможливо привітати особисто.</p>
+                        </div>
+                        
+                        <div class="adbar">
+                            <p>✅ Мінімізує ризик помилитися в смаках <br> або бажаннях отримувача.</p>
+                        </div>
+                        
+                        <div class="adbar">
+                            <p>✅ Подарунок у вигляді сертифіката <br> гарантує, що людина обере саме те, <br> що їй потрібно. </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="how">
+                    <div class="howleft">
+                        <h3>Як придбати?</h3>
+                        <p>✅ Оберіть номінал сертифіката.</p>
+                        <p>✅ Вкажіть номер телефону (свій або отримувача) для отримання коду.</p>
+                        <p>✅ Після успішної оплати код сертифіката надійде в SMS.</p>
+                    </div>
+                    <div class="howright">
+                        <h3>Як використовувати??</h3>
+                        <p>✅ Оберіть номінал сертифіката.</p>
+                        <p>✅ Вкажіть номер телефону (свій або отримувача) для отримання коду.</p>
+                        <p>✅ Після успішної оплати код сертифіката надійде в SMS.</p>
+                    </div>
+                </div>
+
+                <div class="clients">
+                    <div class="clleft">
+                        <h3 style="margin-bottom:5%; font-weight:600;">Корпоративним клієнтам</h3>
+                        <p>✅ Сертифікати підходять для подарунків працівникам і партнерам, навіть у різних містах України.</p>
+                        <p>✅ Можуть бути використані для купівлі різних товарів з великого асортименту на сайті.</p>
+                        <p>✅ Є вибір між фізичними та електронними сертифікатами.</p>
+                        <p>✅ Електронний сертифікат є більш зручним та екологічним варіантом у порівнянні з паперовим.</p>
+
+                        <button class="rightgreen" style="margin-top:3%">Замовити сертифікати для компанії</button>
+                    </div>
+                    <div class="clright">
+                        <img src="../pictures/certificate/rozbox.png">
+                    </div>
+                </div>
+
+                <div class="questions">
+                    <div class="quleft">
+                        <img src="../pictures/certificate/rrr.png">
+                    </div>
+
+                    <div class="quright">
+                        <h3>Залишились питання по подарунковим сертифікатам?</h3>
+                        <div class="quinput">
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Де можна придбати сертифікати?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Як придбати сертифікат?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Як оплатити сертифікат?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Чи є якісь обмеження на кількість придбання сертифікатів?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Як подарувати чи передарувати сертифікат?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Як використовувати сертифікати?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Я втратив сертифікат, що робити?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Як дізнатись термін дії сертифіката?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">З якими видами доставки можна використовувати сертифікат?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Чи є обмеження на кількість використаних сертифікатів в одному замовленні?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Чи можна оплатити декілька замовлень одним сертифікатом?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Які товари можна оплачувати сертифікатом?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Що робити якщо вартість замовлення більше номіналу сертифіката?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Вартість замовлення менше ніж номінал сертифіката, я можу отримати різницю коштами?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Чи можу я повернути сертифікат та отримати кошти?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Чи можу я в одному замовленні використовувати фізичні та електронні сертифікати?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">При купівлі електронного сертифіката не надійшло повідомлення з даними сертифіката, що робити?</option>
+                            </select>
+
+                            <select name="choice" id="select" size="1">
+                                <option value="UUUUUU">Що буде у разі відмови від товарів, придбаних із застосуванням електронного сертифіката?</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+        <footer>
+            <div class="footcontainer">
+                <div class="footcolum">
+                    <div class="apps">
+                        <h6>Ми в соціальних мережах</h6>
+                        <div class="appsflexx">
+                            <img src="../pictures/tiktok.png" class="smallicon" alt="tiktok">
+                            <img src="../pictures/telegram.png" class="smallicon" alt="telegram">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-facebook-logo-icon-download-in-svg-png-gif-file-formats--new-fb-logos-icons-1395067.png"
+                                class="smallicon" alt="facebook">
+                            <img src="../pictures/youtube.png" class="smallicon" alt="youtube">
+
+                            <img src="../pictures/instagram.jpg" class="smallicon" alt="instagram ">
+                            <img src="../pictures/X.png" class="smallicon" alt="telegram">
+                            <img src="../pictures/viber.jpg" class="smallicon" alt="youtube">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/White_background.png"
+                                class="smallicon" alt="telegram">
+                        </div>
+                        <div class="footqrapp">
+                            <h6>Скануйте QR-код та встановлюйте застосунок</h6>
+                            <div class="footerqrappicon">
+                                <div class="footqrappleft"><img src="../pictures/qr.png"></div>
+                                <div class="footqrappright"><img src="../pictures/appstore.png"><img
+                                        src="../pictures/googleplay.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="footcolum">
+                    <p style="font-size:13px; margin-right: 20px;">Інформація про компанію</p>
+                    <ul>
+                        <li>Про нас</li>
+                        <li>Умови використання сайту</li>
+                        <li><a href="VACATIONS.html">Вакансії</a></li>
+                        <li>Контакти</li>
+                        <li>Всі категорії</li>
+                    </ul>
+                </div>
+
+
+                <div class="footcolum">
+                    <p style="font-size:13px; margin-right: 64px;">Допомога</p>
+                    <ul>
+                        <li>Доставка та оплата</li>
+                        <li>Кредит</li>
+                        <li>Гарантія</li>
+                        <li>Повернення товару</li>
+                        <li>Сервісні центри</li>
+                    </ul>
+                </div>
+
+
+                <div class="footcolum">
+                    <p style="font-size:13px; margin-right: 120px;">Сервіси</p>
+                    <ul>
+                        <li>Бонусний рахунок</li>
+                        <li>Подарункові сертифікати</li>
+                        <li>Rozetka Обмін</li>
+                    </ul>
+                </div>
+
+                <div class="footcolum">
+                    <p style="font-size:13px; margin-right: 90px;">Партнерам</p>
+                    <ul>
+                        <li>Бонусний рахунок</li>
+                        <li><a href="CERTIFICATE.html">Подарункові сертифікати</a></li>
+                        <li>Rozetka Обмін</li>
+                    </ul>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="footbottom">
+                    <button>Смартфони</button>
+                    <button>Телефони Samsung</button>
+                    <button>Комп'ютери Дніпро</button>
+                    <button>Apple AirPods</button>
+                    <button>Apple Watch</button>
+                    <button>Apple iPad</button>
+                    <button>Apple iPhone</button>
+                    <button>Macbook Air</button>
+                    <button>Macbook Pro</button>
+                    <button>Macbook</button>
+                    <button>Показати ще</button>
+                </div>
+                <div class="fobottom">
+                    <div class="footcard">
+                        <img src="../pictures/mastercard-logo.svg">
+                        <img src="../pictures/visa-logo.svg">
+                    </div>
+                    <h6>© 2001–2025 Інтернет-магазин «Розетка™» — Щоразу що треба ТМ використовується на підставі
+                        ліцензії правовласника RozetkaLTD</h6>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+</body>
+
+</html>
